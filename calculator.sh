@@ -1,23 +1,50 @@
 #!/bin/bash
-#Basic Calculator
+#BASIC CALCULATOR
 
-#read inputs from user
+#Read first integer from user
+echo "Please type in your first number: "
+read int1
 
-#read first integer from user
-#read second integer from user
-#read operation option from user and specify the options for the user like '*' '/' or 'multiplication'
+#Read second integer from user
+echo "Please type in your second number: "
+read int2
 
-#arithmetic
+#Read operation symbol from user '+' '-' 'x' '/'
+echo "Please type in your operator symbol (For addition, type '+'; For subtraction, type '-'; For multiplication, typ>
+read symbol
 
-#if addition, add integer 1 and integer 2 and display the answer
-#if (else) subtraction, subtract integer 1 from integer 2 and display the answer
-#if (else) multiplication, multiply integer 1 and integer 2 and display the answer
-#if (else) division, divide integer 1 by integer 2 and display the answer
-#if dividing by 0, include an error message
+#Division: if '/' then divide
+if [[ "$symbol" == / ]]
+then
+        #if int2 does not equal 0, go ahead and divide
+        if [[ "$int2" != 0 ]]
+        then
+                dtotal=$(($int1 / $int2))
+                echo ""$int1" / "$int2" = "$dtotal"."
 
+        else
+                #if int2 equals 0, show error message
+                echo "Cannot divide by 0 bro."
+        fi
 
+#Addition: if '+' then add
+elif [[ "$symbol" == + ]]
+then
+        atotal=$(($int1 + $int2))
+        echo ""$int1" + "$int2" = "$atotal"."
 
+#Subtraction: if '-' then subtract
+elif [[ "$symbol" == - ]]
+then
+        stotal=$(($int1 - $int2))
+        echo ""$int1" - "$int2" = "$stotal"."
 
+#Multiplication: if 'x' then multiply
+elif [[ "$symbol" == x ]]
+then
+        mtotal=$(($int1 * $int2))
+        echo ""$int1" x "$int2" = "$mtotal"."
 
-
-
+else
+        echo "Operation symbol not entered."
+fi
