@@ -73,6 +73,17 @@ As I'm testing, I realize I also need an error message if the user types in non-
 ![image](https://github.com/user-attachments/assets/990d6ffd-6374-4d82-ab3a-989c8581ebfe)
 
 ***EDIT: (Section for adding error message)
+So for an error message to pop up if a user enters a non integer, I had to figure out how to test if an input is a non-integer. From this forum, I found that I can write a command where I test if the input variable is equal to itself (which should only output "TRUE" if it's a real number beause we're talking actual math value). And from there, I can make that into an if statement where if the input variable is not equal to itself, a.k.a not a number, then I echo out an error message and have the script stop. And then do the same for the input for number 2. I'm wondering if I can write that as separate commands after each "read" command or if I have to run my script into a giant if statement with all commands nested in that first if condition (for the first integer read from the user).
+
+forum: https://stackoverflow.com/questions/4137262/is-there-an-easy-way-to-determine-if-user-input-is-an-integer-in-bash
+
+![image](https://github.com/user-attachments/assets/7c8f542f-7b24-45fa-850a-433576474949)
+
+I made a new test script (above) to test this command, however, my error message only successfully showed up only when I typed in single letters as the prompt (ie. 'g' or 'k'). If I did '90000pl' or 'gdjkdj', a generic shell-generated error message would show up.
+
+![image](https://github.com/user-attachments/assets/3c8e31d6-4c17-49c0-b7ed-7d5f8fb4a40b)
+
+
 
 
 To finish off this script, I added in echo messages to serve as instructions for user input, pseudo code labels where needed, and descriptive output messages that print the arithmetic equation and answer. I also made int1 and int2 as variables to be read from the user's input.
