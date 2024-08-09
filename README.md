@@ -92,7 +92,7 @@ It seemed to work, however, my error message successfully showed up only when I 
 
 ![image](https://github.com/user-attachments/assets/3c8e31d6-4c17-49c0-b7ed-7d5f8fb4a40b)
 
-So, back to the drawing board. I went back to the forum for the other solution given - writing a function that checks if there's "length" in the string, string being the input from the user. "Length" being present in the string indicates that string type value(s) - so literal letters or characters - are present in the input. 
+So, back to the drawing board. I went back to the forum for the other solution given - writing a function that checks if there's "length" in the string, string being the input from the user. "Length" being present in the string indicates that there are values present in the input. 
 
 The command is `if [[ -n ${input//[0-9]/} ]]` and I tested this out in another test script below. 
 
@@ -104,14 +104,18 @@ This time around, the script worked as intended and threw my error message at an
 
 
 Understanding this command: `if [[ -n ${input//[0-9]/} ]]`
+
 Zooming in to out:
 - The `[0-9]` part represents our pattern which encompasses all digits from 0 to 9.
 - `//` means to replace all occurrences of the pattern: [0-9].
 - Lastly, the `/` after the pattern means to replace all digits in the input with nothing, basically deleting them out of the input.
+  
+So altogether, if I as the user typed in '676hel90lo8' as my input, this part of the command would translate it to 'hello' before moving on to the next part.
 
-So altogether, if I as the user typed in '676hel90lo8' as my input, this part of the command would translate it into 'hello' before moving on to the next part.
+The next part includes the `-n` flag, which checks if the length of the string is not zero, or not empty. If it's not empty, the condition output is 'TRUE'. So since my input includes the letters 'hello' (after all my digits were "erased") this line would return back 'TRUE' indicating values are still present in the input.
 
-The next part includes the `-n` flag, which checks if the length of the string is not zero, or not empty. If it's not empty, the condition output is 'TRUE'. So since my input includes the letters 'hello' (after all my digits were "erased") this line would return back 'TRUE' indicating non-integer bits were present in the input.
+
+***EDIT should I explain the curl braces too...`${...}` "allows the evaluation or modification of the value of a variable" - and in this case we are modifying. 
 
 ## ***EDIT: (Section for how I bring it altogether)
 So now that I've confirmed I can check for non-integer inputs this way, I have to finnaegle this back into my main calculator script...
