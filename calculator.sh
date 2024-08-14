@@ -5,12 +5,26 @@
 echo "Please type in your first number: "
 read int1
 
+#Checking if int1 is an integer. If not, stop the script and print error message.
+if [[ -n ${int1//[0-9]/} ]]
+        then
+        echo "Input error: Not an integer."
+        exit 1
+fi
+
 #Read second integer from user
 echo "Please type in your second number: "
 read int2
 
+#Checking if int2 is an integer. If not, stop the script and print error message.
+if [[ -n ${int2//[0-9]/} ]]
+        then
+        echo "Input error: Not an integer."
+        exit 1
+fi
+
 #Read operation symbol from user '+' '-' 'x' '/'
-echo "Please type in your operator symbol (For addition, type '+'; For subtraction, type '-'; For multiplication, typ>
+echo "Please type in your operator symbol (For addition, type '+'; For subtraction, type '-'; For multiplication, type 'x'; For division, type '/')"
 read symbol
 
 #Division: if '/' then divide
