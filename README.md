@@ -61,7 +61,8 @@ Past uses of `*` were when we wanted to make sure *all* of something is included
 So I decided to use 'x' instead (which worked fine) and included that in my instructions about the available symbols the user can pick from when using the calculator.
 
 ![image](https://github.com/user-attachments/assets/513fbbf8-338a-4d2c-adfd-2382f4abedd8)
-## If-else and elif statements
+
+## If else and elif statements for all 4 arithmetic operations
 
 Next, I moved on to fitting all the arithmetic operations into one if-else statement. Since the division section required two conditionals: 1. the division function and 2. the error message, I wanted to start there. 
 
@@ -83,6 +84,7 @@ Now, putting it altogether -- since there are multiple possible conditions to be
 
 ![image](https://github.com/user-attachments/assets/fe299d1b-8caa-45f5-924d-018a33d801a0)
 
+## Testing if user inputs are integers or not
 As I'm testing, I realize I also need an error message if the user types in non-integers for int1 and int2 (the two integers input by the user to use the calculator). For int1 and int2, I typed in 't' and 'g' and got the below error.
 
 ![image](https://github.com/user-attachments/assets/990d6ffd-6374-4d82-ab3a-989c8581ebfe)
@@ -125,7 +127,7 @@ So altogether, if I as the user typed in '676hel90lo8' as my input, this part of
 
 The next part includes the `-n` flag, which checks if the length of the string (in {} curly braces) is not zero, or not empty. If it's not empty, the condition output is 'TRUE'. So since my input *still* includes the letters 'hello' (after all my digits were "erased") this line would return back 'TRUE' indicating values are still present in the input.
 
-## How I bring it altogether:
+## How I brought it altogether:
 So now that I've confirmed I can check for non-integer inputs this way, I have to finnaegle this back into my main calculator script...
 
 As mentioned before, I want to figure out how to have the script stop itself with an error message if either the first or second input from the user is a non-integer - without having to edit my existing calculator code.
@@ -148,7 +150,7 @@ Rewrote the if statement to include "exit 1" and it ran as intended:
 
 Then, I added the same if statement after the second read input as well. Ran the script again and both exit codes worked as intended. And I'm relieved I didn't have to edit my previous work which is the point of the exit codes I guess.
 
-To finish off this script, I added in more style details: echo messages to serve as input instructions for the user, pseudo code labels where needed, and descriptive output messages that print both the arithmetic equation requested and the answer to the equation. 
+To finish off this script, I added in more style details: echo messages to serve as input instructions for the user, additional pseudo code labels where needed, and descriptive output messages that print both the arithmetic equation requested and the answer to the equation. 
 
 ## Conclusion
-Starting with drawing out on paper how this calculator should work first and then working only with static variables once I started scripting was immensely helpful. Documenting at the same time as figuring out my script was also helpful as I was able to keep track of my thought process while working and continue where I left off after stepping away.
+Starting with drawing out on paper how this calculator should work first and then working only with static variables once I started scripting was very helpful. Documenting at the same time as figuring out my script was also helpful as I was able to keep track of my thought process while working and continue where I left off after stepping away.
