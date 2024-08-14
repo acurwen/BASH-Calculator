@@ -7,7 +7,10 @@ For this project, I created a basic calculator program in Bash that can perform 
 To start, I typed out psuedo code that helped me outline the different "chunks" of this script. (I also wrote out on paper example inputs and expected outcomes for this script which helped me come up with my pseudo code.) From there, I worked on each "chunk" of the script based off each psuedo code line.
 
 Edit: The if (else) subtraction line should read that integer 2 is being subtracted from integer 1.
-## Thought Process
+# Thought Process
+
+## Figuring out basic arithmetic expressions
+
 During class, I learned it's best practice to start testing with static numbers to see where our dynamic variables will come in later. I followed this approach with using '3' and '4' and focusing first on addition. I researched the syntax for arithmetic expressions in Bash and found 
 
 `$((arithmetic-expression))`, 
@@ -30,6 +33,8 @@ For division, I checked what happens when you divide by 0 and the terminal gave 
 ![image](https://github.com/user-attachments/assets/45fae52e-63e8-4d35-acff-3d2099ceff42)
 
 For my division section, my error message should show up when the second integer is 0 AND the operation symbol is '/'. Keeping that in mind, I moved onto my if else statements. 
+
+## Writing if statements based on operation symbol
 
 Now, for the if else statements, the statement to run will be determined by the operator symbol typed by the user. So I have to figure out how to use the operation symbols to dictate which arithmetic condition is met. 
 
@@ -56,7 +61,7 @@ Past uses of `*` were when we wanted to make sure *all* of something is included
 So I decided to use 'x' instead (which worked fine) and included that in my instructions about the available symbols the user can pick from when using the calculator.
 
 ![image](https://github.com/user-attachments/assets/513fbbf8-338a-4d2c-adfd-2382f4abedd8)
-## If-else (elif) statements
+## If-else and elif statements
 
 Next, I moved on to fitting all the arithmetic operations into one if-else statement. Since the division section required two conditionals: 1. the division function and 2. the error message, I wanted to start there. 
 
