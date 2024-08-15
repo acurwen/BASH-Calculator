@@ -7,6 +7,7 @@ For this project, I created a basic calculator program in Bash that can perform 
 To start, I typed out psuedo code that helped me outline the different "chunks" of this script. (I also wrote out on paper example inputs and expected outcomes for this script which helped me come up with my pseudo code.) From there, I worked on each "chunk" of the script based off each psuedo code line.
 
 Edit: The if (else) subtraction line should read that integer 2 is being subtracted from integer 1.
+
 # Thought Process
 
 ## Figuring out basic arithmetic expressions
@@ -19,7 +20,7 @@ and used it in the below code which successfully returned '7'.
 
 ![image](https://github.com/user-attachments/assets/50294dac-a0e7-4d2d-a5f7-dedb1ebc5362)
 
-I repeated the same function for subtraction, multiplication and division. For subtraction, I got -1, multiplication, 12, but for division, I got 0. I was wondering how we would account for decimal points with whole numbers, but since we are asking for an integer input, we will also get integer outputs. Researching some more, I see now that bash only supports integers so I don't have to worry about decimal points. (But I do have to create an error message when my script is prompted to divide by 0.) 
+I repeated the same function for subtraction, multiplication and division. For subtraction, I got -1, multiplication, 12, but for division, I got 0. I was wondering how we would account for decimal points with whole numbers, but since we are asking for an integer input, we will also get integer outputs. Researching some more, I found that bash only supports integers so I didn't have to worry about decimal points. (But I did have to create my own error message when my script is prompted to divide by 0.) 
 
 ![image](https://github.com/user-attachments/assets/8c6c6f78-0723-4634-afe5-7af73c5390d8)
 
@@ -36,7 +37,7 @@ For my division section, my error message should show up when the second integer
 
 ## Writing if statements based on operation symbol
 
-Now, for the if else statements, the statement to run will be determined by the operator symbol typed by the user. So I have to figure out how to use the operation symbols to dictate which arithmetic condition is met. 
+Now, for the if else statements, the statement to run will be determined by the operator symbol typed by the user. Here, I had to figure out how to use the operation symbols to dictate which arithmetic condition is met. 
 
 Keeping the numbers static still, I tested an if conditional based off the operation symbol, starting with '+' for addition. I added a 'read' line for the user to input an operation symbol and assigned that to a variable called 'symbol'. Ran the script, typed in '+' and it successfully returned '7'.
 
@@ -56,7 +57,7 @@ Result:
 
 Playing around with the script, I realized using `*` in my condition statement would throw that error no matter what. I figured it was most likely a bash syntax issue where `*` represents something else then what I'm intending. 
 
-Past uses of `*` were when we wanted to make sure *all* of something is included in relation to a command, for example, searching *all* of a directory or replacing *all* instances of a specified word in a file. I haven't yet figured out what it actually represents in this case here, but based off the error, I'm using the wrong syntax for it.
+Past uses of `*` were when we wanted to make sure *all* of something is included in relation to a command, for example, searching *all* of a directory or replacing *all* instances of a specified word in a file. I haven't yet figured out what it specifically represents in this case here, but based off the error, I'm using the wrong syntax for it.
 
 So I decided to use 'x' instead (which worked fine) and included that in my instructions about the available symbols the user can pick from when using the calculator.
 
@@ -95,9 +96,9 @@ So for an error message to pop up if a user enters a non integer, I had to figur
 Command: `if [[ $((foo)) != $foo ]]`
 
 
-And from there, I can make that into an if statement where *if* the input variable is not equal to itself, a.k.a not a number, then I echo out an error message and have the script stop. And then do the same for the second input I request from the user. I'm wondering if I can write that as separate commands after each "read" command early in my script, or if I have to re-write my script into a giant if statement with all the commands nested.
+And from there, I can make that into an if statement where *if* the input variable is not equal to itself, a.k.a not a number, then I echo out an error message and have the script stop. And then do the same for the second input I request from the user. At this point, I was wondering if I could write this as a separate command after each "read" command early in my script, or if I had to re-write my script into a giant if statement with all the commands nested.
 
-First, I made a new test script below (and corny on purpose) to test this command.
+First, I made a new test script below (corny on purpose) to test this command.
 
 ![image](https://github.com/user-attachments/assets/7c8f542f-7b24-45fa-850a-433576474949)
 
@@ -128,15 +129,15 @@ So altogether, if I as the user typed in '676hel90lo8' as my input, this part of
 The next part includes the `-n` flag, which checks if the length of the string (in {} curly braces) is not zero, or not empty. If it's not empty, the condition output is 'TRUE'. So since my input *still* includes the letters 'hello' (after all my digits were "erased") this line would return back 'TRUE' indicating values are still present in the input.
 
 ## How I brought it altogether:
-So now that I've confirmed I can check for non-integer inputs this way, I have to finnaegle this back into my main calculator script...
+So now that I confirmed I could check for non-integer inputs this way, I had to finnaegle this back into my main calculator script...
 
-As mentioned before, I want to figure out how to have the script stop itself with an error message if either the first or second input from the user is a non-integer - without having to edit my existing calculator code.
+As mentioned before, I wanted to figure out how to have the script stop itself with an error message if either the first or second input from the user is a non-integer - without having to edit my existing calculator code.
 
 Back in my main script, I put the if loop that checks for length in the beginning right after the "read int1" command and tested it. 
 
 ![image](https://github.com/user-attachments/assets/e7a42c97-8aaa-4c16-ab44-0af1ee6dd60e)
 
-The command worked as intended and thew the echo error message when I inputted various non-integers, however, the script kept running and asked me for the second integer, which I don't want. 
+The command worked as intended and thew the echo error message when I inputted various non-integers, however, the script kept running and asked me for the second integer, which I didn't want. 
 
 ![image](https://github.com/user-attachments/assets/c9e9f63b-79f5-4461-9e39-eb70c25b2620)
 
@@ -148,7 +149,7 @@ Rewrote the if statement to include "exit 1" and it ran as intended:
 
 ![image](https://github.com/user-attachments/assets/83704b1f-adab-4c11-bad5-954b9c128016)
 
-Then, I added the same if statement after the second read input as well. Ran the script again and both exit codes worked as intended. And I'm relieved I didn't have to edit my previous work which is the point of the exit codes I guess.
+Then, I added the same if statement after the second read input as well. Ran the script again and both exit codes worked as intended. Definitely relieved I didn't have to edit my previous work which is the great thing about exit codes I assume!
 
 To finish off this script, I added in more style details: echo messages to serve as input instructions for the user, additional pseudo code labels where needed, and descriptive output messages that print both the arithmetic equation requested and the answer to the equation. 
 
